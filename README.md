@@ -11,6 +11,7 @@ python manage.py migrate
 python manage.py seed
 python manage.py runserver
 ```
+You will need the cryptography module listed in requirements.txt
 
 ## Comments
 The app is a minimalistic online shop that sells brands of coffee. It should be fully functional and the navigation should be self-explanatory. For those with less coding experience, I recommend rerunning the seed file "python manage.py seed" after applying each fix. This is because some of the fixes hash and encrypt the plaintext data in the database. The seed file creates three default users: Alice has password 1, Bob has password 2, 
