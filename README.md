@@ -1,7 +1,5 @@
 ## Setup
 
-Clone the repository:
-
 ```bash
 git clone https://github.com/<your-user>/<your-repo>.git
 cd <your-repo>
