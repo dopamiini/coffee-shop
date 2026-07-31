@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - The Coffee Shop</title>
+</head>
+<body>
+<h1>The Coffee Shop</h1>
+<a href="{% url 'index' %}">Home</a><hr>
+<h2>Create Account</h2>
+{% if error %}
+    <p style="color:red">{{ error }}</p>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <p>
+        <label>Username</label><br>
+        <input type="text" name="username" required>
+    </p>
+    <p>
+        <label>Email</label><br>
+        <input type="email" name="email" required>
+    </p>
+    <p>
+        <label>Password</label><br>
+        <input type="password" name="password" required>
+    </p>
+    <p>
+        <label>Confirm Password</label><br>
+        <input type="password" name="confirm_password" required>
+    </p>
+    <p>
+        <label>Saved Payment Card</label><br>
+        <input type="text" name="saved_card_number" maxlength="19" placeholder="" required>
+    </p>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

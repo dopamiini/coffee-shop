@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order - The Coffee Shop</title>
+</head>
+<body>
+<h1>The Coffee Shop</h1>
+(Logged in as {{ username }}) | 
+<a href="{% url 'index' %}">Home</a> |
+<a href="{% url 'cart' %}">Cart</a> | 
+<a href="{% url 'profile' %}">Profile</a> | 
+<a href="{% url 'logout' %}">Logout</a>
+<hr>
+<h2>Customer: {{ order.user.username }}</h2>
+<h3>Order #{{ order.id }}</h3>
+<p>Date: {{ order.created }}</p>
+<h3>Items</h3>
+{% for item in items %}
+    <p>
+        {{ item.product.name }}
+        x{{ item.quantity }}
+        - ${{ item.product.price }}
+    </p>
+{% endfor %}
+<h3>Total: ${{ order.total }}</h3>
+<a href="{% url 'orders' %}">Back to Orders</a>

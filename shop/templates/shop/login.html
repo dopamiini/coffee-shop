@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - The Coffee Shop</title>
+</head>
+<body>
+<h1>The Coffee Shop</h1>
+{% if attempts %}
+    <span>(Failed attempts: {{ attempts }}/{{ max_attempts }})</span> |
+{% endif %}
+<a href="{% url 'index' %}">Home</a><hr>
+<h2>Login</h2>
+{% if error %}
+    <p style="color:red">{{ error }}</p>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    <p>Username  <input type="text" name="username"></p>
+    <p>Password  <input type="password" name="password"></p>
+    <span>
+        No account? <a href="{% url 'register' %}">Register</a>
+        <button type="submit" style="display: inline; margin-left: 5px;">Submit</button>
+    </span>
+</form>
+</body>
+</html>

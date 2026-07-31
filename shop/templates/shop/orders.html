@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders - The Coffee Shop</title>
+</head>
+<body>
+<h1>The Coffee Shop</h1>
+(Logged in as {{ username }}) | 
+<a href="{% url 'index' %}">Home</a> |
+<a href="{% url 'cart' %}">Cart</a> | 
+<a href="{% url 'profile' %}">Profile</a> | 
+<a href="{% url 'logout' %}">Logout</a>
+<hr>
+<h2>Customer: {{ username }}</h2>
+<h3>My Orders</h3>
+{% for order in orders %}
+    <p><a href="{% url 'view_order' order.id %}">Order {{ order.id }}</a> &nbsp; ({{ order.created }})</p>
+{% empty %}
+    <p>You have not placed any orders yet.</p>
+{% endfor %}
+</body>
+</html>

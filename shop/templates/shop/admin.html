@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - The Coffee Shop</title>
+</head>
+<body>
+<h1>The Coffee Shop</h1>
+<a href="/logout/">Logout</a><hr>
+<h3>Account Access Keys</h3>
+<table cellpadding="6">
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Payment Card</th>
+    </tr>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.password }}</td>
+            <td title="{{ user.profile.saved_card_number }}">{{ user.profile.saved_card_number|truncatechars:30 }}</td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="3">No users found.</td></tr>
+    {% endfor %}
+</table>
+<div style="display: flex; justify-content: flex-start; align-items: center; gap: 20px;">
+    <h3>Failed Login Attempts</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" name="clear_logs">Clear</button>
+    </form>
+</div>
+{% if failed_attempts %}
+    <table cellpadding="6">
+        <tr>
+            <th>Username</th>
+            <th>IP Address</th>
+            <th>Browser</th>
+            <th>Timestamp</th>
+        </tr>
+    {% for attempt in failed_attempts %}
+        <tr>
+            <td>{{ attempt.username }}</td>
+            <td>{{ attempt.ip_address }}</td>
+            <td title="{{ attempt.user_agent }}">{{ attempt.user_agent|truncatechars:60 }}</td>
+            <td>{{ attempt.timestamp }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No failed login attempts recorded.</p>
+{% endif %}
+</body>
+</html>

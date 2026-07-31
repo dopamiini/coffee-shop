@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart - The Coffee Shop</title>
+</head>
+<body>
+<h1>The Coffee Shop</h1>
+{% if username %}
+    <span>
+        (Logged in as {{ username }}) |
+        <a href="{% url 'index' %}">Home</a> |
+        <a href="{% url 'profile' %}">Profile</a> |
+        <a href="{% url 'orders' %}">Orders</a> |
+        <a href="{% url 'logout' %}">Logout</a>
+    </span>
+{% endif %}
+<hr>
+<h2>Shopping Cart</h2>
+{% if cart_items %}
+    <table cellpadding="6">
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+    {% for item in cart_items %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>${{ item.product.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>${{ item.subtotal }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <h3>Total: ${{ total }}</h3>
+    <a href="{% url 'index' %}">Continue Shopping</a>
+    <form method="post" action="{% url 'checkout' %}" style="display: inline; margin-left: 20px;">
+        {% csrf_token %}
+        <button type="submit">Checkout</button>
+    </form>
+{% else %}
+    <p>Your shopping cart is empty.</p>
+{% endif %}
+</body>
+</html>

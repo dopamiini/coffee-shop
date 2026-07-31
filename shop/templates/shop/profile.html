@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile - The Coffee Shop</title>
+</head>
+<body>
+<h1>The Coffee Shop</h1>
+(Logged in as {{ user.username }}) | 
+<a href="{% url 'index' %}">Home</a> |
+<a href="{% url 'cart' %}">Cart</a> | 
+<a href="{% url 'orders' %}">Orders</a> | 
+<a href="{% url 'logout' %}">Logout</a>
+<hr>
+<h2>Account Information</h2>
+<p><strong>Username:</strong> {{ user.username }}</p>
+<p><strong>Email:</strong> {{ profile.email }}</p>
+<p><strong>Saved Payment Card:</strong> {{ masked_card }}</p>
+</body>
+</html>
