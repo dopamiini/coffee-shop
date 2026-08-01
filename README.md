@@ -1,8 +1,8 @@
 ## Setup
 
 ```bash
-git clone https://github.com/<your-user>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/dopamiini/coffee-shop.git
+cd coffee_shop
 python -m venv venv
 source venv/bin/activate  # Linux/macOS
 venv\Scripts\activate     # Windows
