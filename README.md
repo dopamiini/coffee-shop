@@ -2,7 +2,7 @@
 
 Git and Python 3.11 or newer.
 
-## Installation
+## Installation and Setup
 
 ```bash
 # Clone the repository
