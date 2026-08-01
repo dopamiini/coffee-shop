@@ -1,20 +1,48 @@
+## Requirements
+
+```bash
+Before setting up the project, make sure you have:
+Git and Python 3.11 or newer
+```
+
 ## Setup
 
 ```bash
+# Clone the repository
 git clone https://github.com/dopamiini/coffee-shop.git
-cd coffee_shop
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
+
+# Navigate to the project directory
+cd coffee-shop
+
+# Create a virtual environment
+python -m venv .venv
+
+# Activate the virtual environment
+
+# Linux/macOS
+source .venv/bin/activate
+
+# Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Apply database migrations
 python manage.py migrate
+
+# Seed the database (required for the demo data and full functionality)
 python manage.py seed
+
+# Start the development server
 python manage.py runserver
 ```
-You will need the django and the cryptography module listed in requirements.txt.
+Once the server is running, open your browser and navigate to: 
+
+http://127.0.0.1:8000/
 
 ## Comments
-The app is a minimalistic online shop that sells brands of coffee. It should be fully functional and the navigation should be self-explanatory. For those with less coding experience, I recommend rerunning the seed file "python manage.py seed" after applying each fix. This is because some of the fixes hash and encrypt the plaintext data in the database. The seed file creates three default users: Alice has password 1, Bob has password 2, 
+The app is a minimalistic online shop that sells brands of coffee. It should be fully functional and the navigation should be intuitivey. For those with less coding experience, I recommend rerunning the seed file "python manage.py seed" after applying each fix. This is because some of the fixes hash and encrypt the plaintext data in the database. The seed file creates three default users: Alice has password 1, Bob has password 2, 
 and admin has password admin.
 
 Listing of the flaws covered:
