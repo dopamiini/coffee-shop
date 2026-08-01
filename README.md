@@ -5,36 +5,25 @@ Git and Python 3.11 or newer.
 ## Installation and Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/dopamiini/coffee-shop.git
 cd coffee-shop
 
-# Create a virtual environment
 python -m venv .venv
 
 # Activate the virtual environment
-# Linux/macOS
-source .venv/bin/activate
-# Windows (PowerShell)
-.venv\Scripts\Activate.ps1
+# Linux/macOS source .venv/bin/activate
+# Windows (PowerShell) .venv\Scripts\Activate.ps1
 
-# Install dependencies
 pip install -r requirements.txt
-
-# Apply database migrations
 python manage.py migrate
-
-# Seed the database (required for demo functionality)
 python manage.py seed
-
-# Start the development server
 python manage.py runserver
 ```
 
-Once the server is running, open `http://127.0.0.1:8000/` in your browser.
+Running the `seed` file is needed for demo functionality. Once the server is running, open `http://127.0.0.1:8000/` in your browser.
 
 ## Comments
-This project was built with Django 5.2 and initialized using the standard template `django-admin startproject`. The app is a minimalistic online shop that sells brands of coffee. It should be fully functional and the navigation should be intuitive. For those with less coding experience, I recommend rerunning the seed file `python manage.py seed` after applying each fix. This is because some of the fixes hash and encrypt the plaintext data in the database. The seed file creates three default users: Alice has password 1, Bob has password 2, 
+This project was built with Django 5.2 and initialized using the standard template `django-admin startproject`. The app is a minimalistic online shop that sells brands of coffee. It should be fully functional and navigation should be intuitive. I'd recommend rerunning the seed file `python manage.py seed` after applying each fix, because some of the fixes hash and encrypt the plaintext data in the database. The seed file creates three default users: Alice has password 1, Bob has password 2, 
 and admin has password admin.
 
 ## Vulnerabilities covered
